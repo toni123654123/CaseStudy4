@@ -17,17 +17,17 @@
     <p th:text="${message}"></p>
 </th:block>
 <form th:action="@{/author/create}" th:object="${author}" method="post">
-    <table>
+    <table border="1px">
         <tr>
             <th>AuthorName</th>
             <td><input type="text" th:field="*{authorName}"></td>
         </tr>
         <tr>
             <th>AuthorDesc</th>
-            <td><textarea rows="4" cols="50" th:field="*{authorDesc}"></textarea></td>
+            <td><textarea rows="4" cols="30" th:field="*{authorDesc}"></textarea></td>
         </tr>
         <tr>
-            <td colspan="2"><input type="submit" value="create"></td>
+            <td colspan="2" align="center"><input type="submit" value="create"></td>
         </tr>
     </table>
 </form>
