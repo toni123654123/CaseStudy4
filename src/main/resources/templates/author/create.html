@@ -5,6 +5,33 @@
     <title>Title</title>
 </head>
 <body>
-
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>create</title>
+</head>
+<h3><a th:href="@{/author}">list author</a></h3>
+<body>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/author/create}" th:object="${author}" method="post">
+    <table>
+        <tr>
+            <th>AuthorName</th>
+            <td><input type="text" th:field="*{authorName}"></td>
+        </tr>
+        <tr>
+            <th>AuthorDesc</th>
+            <td><textarea rows="4" cols="50" th:field="*{authorDesc}"></textarea></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="create"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
 </body>
 </html>

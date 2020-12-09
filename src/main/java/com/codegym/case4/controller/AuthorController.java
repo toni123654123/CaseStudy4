@@ -29,10 +29,10 @@ public class AuthorController {
         modelAndView.addObject("authors", provinces);
         return modelAndView;
     }
-    @GetMapping("/auhthor/create")
+    @GetMapping("/author/create")
     public ModelAndView showCreateForm(){
         ModelAndView modelAndView = new ModelAndView("author/create");
-        modelAndView.addObject("auhthor", new Author());
+        modelAndView.addObject("author", new Author());
         return modelAndView;
     }
     @PostMapping("/author/create")
@@ -46,7 +46,7 @@ public class AuthorController {
     public ModelAndView viewProvince(@PathVariable("id") Long id){
         Optional<Author> author = myAuthorService.findById(id);
         if(author == null){
-            return new ModelAndView("customer/list");
+            return new ModelAndView("author/list");
         }
 
         Iterable<Book> book = myBookService.findAllByAuthor(author.get());
