@@ -78,7 +78,7 @@ public class AuthorController {
         return modelAndView;
     }
 
-    @PostMapping("/{id}/delete")
+    @PostMapping("/delete")
     public ModelAndView deleteAuthor(@PathVariable Long id) {
         myAuthorService.remove(id);
         ModelAndView modelAndView = new ModelAndView("/author/list");
