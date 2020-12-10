@@ -7,6 +7,7 @@ import com.codegym.case4.service.MyBookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -23,7 +24,7 @@ public class AuthorController {
 
 
     @GetMapping("/author")
-    public ModelAndView listProvince(){
+    public ModelAndView listAuthor(){
         Iterable<Author> provinces = myAuthorService.findAll();
         ModelAndView modelAndView = new ModelAndView("author/list");
         modelAndView.addObject("authors", provinces);
@@ -36,14 +37,14 @@ public class AuthorController {
         return modelAndView;
     }
     @PostMapping("/author/create")
-    public ModelAndView createProvince(Author author){
+    public ModelAndView createAuthor(Author author){
         myAuthorService.save(author);
         ModelAndView modelAndView = new ModelAndView("author/create", "author", new Author());
         modelAndView.addObject("message", "new author created successfully");
         return modelAndView;
     }
     @GetMapping("/view-author/{id}")
-    public ModelAndView viewProvince(@PathVariable("id") Long id){
+    public ModelAndView viewAuthor(@PathVariable("id") Long id){
         Optional<Author> author = myAuthorService.findById(id);
         if(author == null){
             return new ModelAndView("author/list");
@@ -56,4 +57,33 @@ public class AuthorController {
         modelAndView.addObject("books", book);
         return modelAndView;
     }
+    @GetMapping("/{id}/edit")
+    public ModelAndView editAuthor(@PathVariable Long id) {
+        Optional<Author> author = myAuthorService.findById(id);
+        ModelAndView modelAndView = new ModelAndView("author/edit");
+        if (author != null) {
+            modelAndView.addObject("author", author);
+        } else {
+            modelAndView.addObject("message", "unknown author ");
+        }
+        return modelAndView;
+    }
+
+    @PostMapping("/edit")
+    public ModelAndView updateAuthor(@ModelAttribute("author") Author author) {
+        myAuthorService.save(author);
+        ModelAndView modelAndView = new ModelAndView("/author/edit");
+        modelAndView.addObject("author", author);
+        modelAndView.addObject("message", " author updated successfully");
+        return modelAndView;
+    }
+
+    @PostMapping("/{id}/delete")
+    public ModelAndView deleteAuthor(@PathVariable Long id) {
+        myAuthorService.remove(id);
+        ModelAndView modelAndView = new ModelAndView("/author/list");
+        modelAndView.addObject("message", " author updated successfully");
+        return modelAndView;
+    }
+
 }
