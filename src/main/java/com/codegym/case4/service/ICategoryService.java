@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-public interface ICategoryService{
+public interface ICategoryService {
     Iterable<Category> findAll();
 
     Optional<Category> findById(Long id);

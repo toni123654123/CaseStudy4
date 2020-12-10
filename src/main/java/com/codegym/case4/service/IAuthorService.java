@@ -1,14 +1,12 @@
 package com.codegym.case4.service;
 
 
-
-
 import com.codegym.case4.model.Author;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-public interface MyAuthorService {
+public interface IAuthorService {
     Iterable<Author> findAll();
 
     Optional<Author> findById(Long id);

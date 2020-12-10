@@ -5,7 +5,7 @@ import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "Requests")
-public class Request implements Cloneable{
+public class Request implements Cloneable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long requestId;

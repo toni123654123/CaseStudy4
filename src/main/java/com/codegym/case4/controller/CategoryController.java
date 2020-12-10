@@ -1,11 +1,7 @@
 package com.codegym.case4.controller;
 
-import com.codegym.case4.model.Author;
-import com.codegym.case4.model.Book;
 import com.codegym.case4.model.Category;
 import com.codegym.case4.service.ICategoryService;
-import com.codegym.case4.service.MyAuthorService;
-import com.codegym.case4.service.MyBookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -46,16 +42,17 @@ public class CategoryController {
     }
 
     @GetMapping("/edit/{id}")
-    public ModelAndView showEditForm(@PathVariable Long id){
-        Optional<Category> category= categoryService.findById(id);
-        ModelAndView modelAndView= new ModelAndView("category/edit");
+    public ModelAndView showEditForm(@PathVariable Long id) {
+        Optional<Category> category = categoryService.findById(id);
+        ModelAndView modelAndView = new ModelAndView("category/edit");
         modelAndView.addObject("category", category);
         return modelAndView;
     }
+
     @PostMapping("/edit")
-    public ModelAndView updateCategory(@ModelAttribute Category category){
+    public ModelAndView updateCategory(@ModelAttribute Category category) {
         categoryService.save(category);
-        ModelAndView modelAndView= new ModelAndView("category/edit");
+        ModelAndView modelAndView = new ModelAndView("category/edit");
         modelAndView.addObject("category", new Category());
         modelAndView.addObject("message", "Updated Category successful!!!");
         return modelAndView;

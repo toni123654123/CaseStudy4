@@ -7,7 +7,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "Users")
-public class User implements Cloneable{
+public class User implements Cloneable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
@@ -26,7 +26,7 @@ public class User implements Cloneable{
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
 
-    @Column(columnDefinition="BOOLEAN DEFAULT false")
+    @Column(columnDefinition = "BOOLEAN DEFAULT false")
     private boolean isDeleted;
 
 

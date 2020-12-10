@@ -1,7 +1,6 @@
 package com.codegym.case4.service;
 
 
-
 import com.codegym.case4.model.Author;
 import com.codegym.case4.model.Book;
 import com.codegym.case4.repository.MyBookRepository;
@@ -16,6 +15,7 @@ import java.util.Optional;
 public class BookServiceImpl implements MyBookService {
     @Autowired
     private MyBookRepository myBookRepository;
+
     @Override
     public Page<Book> findAll(Pageable pageable) {
         return myBookRepository.findAll(pageable);
@@ -28,12 +28,12 @@ public class BookServiceImpl implements MyBookService {
 
     @Override
     public void save(Book book) {
-myBookRepository.save(book);
+        myBookRepository.save(book);
     }
 
     @Override
     public void remove(Long id) {
-myBookRepository.deleteById(id);
+        myBookRepository.deleteById(id);
     }
 
     @Override
@@ -44,7 +44,7 @@ myBookRepository.deleteById(id);
 
     @Override
     public Page<Book> findAllByTitelContaining(String title, Pageable pageable) {
-        return myBookRepository.findAllByTitleContaining(title,pageable);
+        return myBookRepository.findAllByTitleContaining(title, pageable);
 //        return null;
     }
 
