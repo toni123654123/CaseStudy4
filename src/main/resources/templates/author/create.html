@@ -17,10 +17,10 @@
     <p th:text="${message}"></p>
 </th:block>
 <form th:action="@{/author/create}" th:object="${author}" method="post">
-    <table border="1px">
+    <table align="center">
         <tr>
             <th>AuthorName</th>
-            <td><input type="text" th:field="*{authorName}"></td>
+            <td><input type="text" th:field="*{authorName}" size="20"></td>
         </tr>
         <tr>
             <th>AuthorDesc</th>

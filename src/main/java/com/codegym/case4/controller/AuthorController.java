@@ -25,9 +25,9 @@ public class AuthorController {
 
     @GetMapping("/author")
     public ModelAndView listAuthor(){
-        Iterable<Author> provinces = myAuthorService.findAll();
+        Iterable<Author> authors = myAuthorService.findAll();
         ModelAndView modelAndView = new ModelAndView("author/list");
-        modelAndView.addObject("authors", provinces);
+        modelAndView.addObject("authors", authors);
         return modelAndView;
     }
     @GetMapping("/author/create")
@@ -77,13 +77,16 @@ public class AuthorController {
         modelAndView.addObject("message", " author updated successfully");
         return modelAndView;
     }
-
-    @PostMapping("/delete")
+    @GetMapping("/{id}/delete")
     public ModelAndView deleteAuthor(@PathVariable Long id) {
         myAuthorService.remove(id);
-        ModelAndView modelAndView = new ModelAndView("/author/list");
-        modelAndView.addObject("message", " author updated successfully");
+        Iterable<Author> authors = myAuthorService.findAll();
+        ModelAndView modelAndView = new ModelAndView("author/list");
+        modelAndView.addObject("authors", authors);
         return modelAndView;
+
+//        modelAndView.addObject("authors", authors);
+
     }
 
 }
