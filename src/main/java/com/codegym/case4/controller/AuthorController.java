@@ -6,37 +6,35 @@ import com.codegym.case4.service.MyAuthorService;
 import com.codegym.case4.service.MyBookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Optional;
 
 
 @Controller
+@RequestMapping("/author")
 public class AuthorController {
-@Autowired
+    @Autowired
     private MyAuthorService myAuthorService;
-@Autowired
+    @Autowired
     private MyBookService myBookService;
 
 
-    @GetMapping("/author")
+    @GetMapping
     public ModelAndView listAuthor(){
         Iterable<Author> authors = myAuthorService.findAll();
         ModelAndView modelAndView = new ModelAndView("author/list");
         modelAndView.addObject("authors", authors);
         return modelAndView;
     }
-    @GetMapping("/author/create")
+    @GetMapping("/create")
     public ModelAndView showCreateForm(){
         ModelAndView modelAndView = new ModelAndView("author/create");
         modelAndView.addObject("author", new Author());
         return modelAndView;
     }
-    @PostMapping("/author/create")
+    @PostMapping("/create")
     public ModelAndView createAuthor(Author author){
         myAuthorService.save(author);
         ModelAndView modelAndView = new ModelAndView("author/create", "author", new Author());
@@ -84,8 +82,6 @@ public class AuthorController {
         ModelAndView modelAndView = new ModelAndView("author/list");
         modelAndView.addObject("authors", authors);
         return modelAndView;
-
-//        modelAndView.addObject("authors", authors);
 
     }
 

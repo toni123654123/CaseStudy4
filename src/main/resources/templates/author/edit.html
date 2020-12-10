@@ -9,7 +9,7 @@
 <th:block th:if="${message}">
     <p th:text="${message}"></p>
 </th:block>
-<form th:action="@{/edit}" th:object="${author}" method="post">
+<form th:action="@{/author/edit}" th:object="${author}" method="post">
     <table align="center">
         <tr>
             <td><input th:field="*{authorId}" hidden="hidden"/></td>
