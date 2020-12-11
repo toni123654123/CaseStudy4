@@ -13,9 +13,9 @@ public class User implements Cloneable {
     private Long userId;
     @NotEmpty
     private String name;
+    private int age;
     @Email
     private String mail;
-    private int age;
     @NotEmpty
     private String phone;
     @NotEmpty
