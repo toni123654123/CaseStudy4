@@ -1,4 +1,4 @@
-package com.codegym.case4.service;
+package com.codegym.case4.service.author;
 
 
 import com.codegym.case4.model.Author;

@@ -1,7 +1,7 @@
 package com.codegym.case4.controller;
 
 import com.codegym.case4.model.Category;
-import com.codegym.case4.service.ICategoryService;
+import com.codegym.case4.service.category.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -14,9 +14,6 @@ import java.util.Optional;
 public class CategoryController {
     @Autowired
     private ICategoryService categoryService;
-
-    //    @Autowired
-//    private MyBookService myBookService;
 
     @GetMapping
     public ModelAndView listCategory() {

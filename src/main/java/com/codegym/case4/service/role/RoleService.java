@@ -1,4 +1,4 @@
-package com.codegym.case4.service;
+package com.codegym.case4.service.role;
 
 
 import com.codegym.case4.model.Role;
@@ -32,4 +32,10 @@ public class RoleService implements IRoleService {
     public void remove(Long id) {
         roleRepository.deleteById(id);
     }
+
+    @Override
+    public Role findRoleByroleName(String roleName) {
+        return roleRepository.findRoleByroleName(roleName);
+    }
+
 }

@@ -1,6 +1,6 @@
 package com.codegym.case4.config;
 
-import com.codegym.case4.service.IUserService;
+import com.codegym.case4.service.user.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

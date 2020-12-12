@@ -1,4 +1,5 @@
-package com.codegym.case4.service;
+package com.codegym.case4.service.book;
+
 
 
 import com.codegym.case4.model.Author;
@@ -8,7 +9,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
-
 public interface MyBookService {
     Page<Book> findAll(Pageable pageable);
 
