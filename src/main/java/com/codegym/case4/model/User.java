@@ -26,7 +26,7 @@ public class User implements Cloneable {
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
 
-    @Column(columnDefinition = "BOOLEAN DEFAULT false")
+    @Column(columnDefinition = "BOOLEAN DEFAULT true")
     private boolean isDeleted;
 
 
