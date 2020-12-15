@@ -5,6 +5,9 @@ header {
   margin-top: auto;
   font-variant: small-caps;
 }
+.top{
+  float: right;
+}
 .shopping-mall>h1 {
   font-family: Impact;
   font-size: 50px;
