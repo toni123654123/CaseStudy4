@@ -28,8 +28,9 @@
 
 
         <form class="d-flex">
-            <button class="log-in btn btn-info d-inline" type="button">Log in</button>
-            <button class="log-out btn btn-danger d-inline" type="button">Log out</button>
+            <a th:href="@{/login}" class="log-in btn btn-info d-inline" type="button" >Log in</a>
+            <a th:href="@{/create}" class="log-in btn btn-danger d-inline" type="button"  >Sign up</a>
+            <a th:href="@{/logout}" class="log-out" type="button" >Log out</a>
         </form>
 
     </nav>
@@ -181,8 +182,7 @@
                         </div>
                         <div class="book-group">
                             <div class="row">
-                                <div th:block th:each="book : ${books}">
-                                    <div class="card card-book mb-3">
+                                    <div class="card card-book mb-3" th:block th:each="book : ${books}">
                                         <div class="card-body">
                                             <table>
                                                 <tr>
@@ -193,14 +193,12 @@
                                                 </tr>
                                                 <tr>
                                                     <td align="center" >
-                                                        <button class="btn btn-success" th:text="${book.authorId.authorName}" th:href="@{/client/book/views__${book.authorId.authorId}}">Views
-                                                        </button>
+                                                            <a class="btn btn-success" th:href="${book.bookId}">Views</a>
                                                     </td>
                                                 </tr>
                                             </table>
                                         </div>
                                     </div>
-                                </div>
                             </div>
                         </div>
                     </div>

@@ -1,6 +1,6 @@
 package com.codegym.case4.config;
 
-import com.codegym.case4.service.user.IUserService;
+import com.codegym.case4.service.User.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -41,7 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
         http.authorizeRequests().antMatchers("/", "/login").permitAll()
-                .antMatchers("/user/**").access("hasRole('ROLE_USER')")
+                .antMatchers("/client/**").access("hasRole('ROLE_USER')")
                 .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
                 .and().formLogin().successHandler(customSuccessHandler);
 //                .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
