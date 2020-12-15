@@ -1,8 +1,7 @@
-package com.codegym.case4.service.user;
-
+package com.codegym.case4.service.User;
 
 import com.codegym.case4.model.User;
-import com.codegym.case4.model.UserPrinciple;
+import com.codegym.case4.model.UserPrincipal;
 import com.codegym.case4.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -14,12 +13,9 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class UserService implements IUserService {
-
-
+public class UserServiceImpl implements IUserService{
     @Autowired
     private IUserRepository userRepository;
-
 
     @Override
     public Page<User> findAll(Pageable pageable) {
@@ -38,7 +34,7 @@ public class UserService implements IUserService {
 
     @Override
     public void remove(Long id) {
-        userRepository.remove(id);
+         userRepository.remove(id);
     }
 
     @Override
@@ -48,11 +44,11 @@ public class UserService implements IUserService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUserName(username);
+        User user = userRepository.findByUserNameAndIsDeletedIsFalse(username);
         if(user == null){
             throw new UsernameNotFoundException(username);
         }
-        return UserPrinciple.build(user);
+        return UserPrincipal.build(user);
     }
 
     @Override
@@ -60,4 +56,8 @@ public class UserService implements IUserService {
         return userRepository.findByUserName(username);
     }
 
+    @Override
+    public User findByUserNameAndIsDeletedIsFalse(String userName) {
+        return userRepository.findByUserNameAndIsDeletedIsFalse(userName);
+    }
 }

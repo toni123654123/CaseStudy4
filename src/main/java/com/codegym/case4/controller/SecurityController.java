@@ -95,7 +95,6 @@ public class SecurityController {
         return "loginPage";
     }
 
-
     @RequestMapping(value = "/logoutSuccessful", method = RequestMethod.GET)
     public String logoutSuccessfulPage(Model model) {
         model.addAttribute("title", "Logout");

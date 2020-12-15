@@ -1,4 +1,4 @@
-package com.codegym.case4.service.category;
+package com.codegym.case4.service.Category;
 
 import com.codegym.case4.model.Category;
 import com.codegym.case4.repository.ICategoryRepository;
@@ -8,10 +8,9 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class CategoryServiceImpl implements ICategoryService {
+public class CategoryServiceImpl implements ICategoryService{
     @Autowired
     ICategoryRepository categoryRepository;
-
 
     @Override
     public Iterable<Category> findAll() {
@@ -19,13 +18,13 @@ public class CategoryServiceImpl implements ICategoryService {
     }
 
     @Override
-    public Optional<Category> findById(Long id) {
-        return categoryRepository.findById(id);
+    public Category save(Category category) {
+        return categoryRepository.save(category);
     }
 
     @Override
-    public void save(Category category) {
-        categoryRepository.save(category);
+    public Optional<Category> findById(Long id) {
+        return categoryRepository.findById(id);
     }
 
     @Override

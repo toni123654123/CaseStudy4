@@ -2,9 +2,11 @@ package com.codegym.case4.controller;
 
 import com.codegym.case4.model.Author;
 import com.codegym.case4.model.Book;
+import com.codegym.case4.model.BookForm;
 import com.codegym.case4.model.Category;
-import com.codegym.case4.service.author.IAuthorService;
-import com.codegym.case4.service.category.ICategoryService;
+import com.codegym.case4.service.Author.IAuthorService;
+import com.codegym.case4.service.Book.IBookService;
+import com.codegym.case4.service.Category.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;

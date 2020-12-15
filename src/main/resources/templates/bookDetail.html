@@ -15,11 +15,11 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/poly.css">
-    <title>Layout</title>
+    <title>BOOK DETAIL</title>
 </head>
 <body>
 <div class="container-fluid" style="height: auto">
-    <nav class="navbar navbar-dark bg-dark" style="background-color: #e3f2fd;">
+    <nav class="navbar navbar-dark" style="background-color: azure">
 
         <div class="col-sm-10 shopping-mall  d-inline">
             <h2>TRIPLE-T</h2>
@@ -28,9 +28,9 @@
 
 
         <form class="d-flex">
-            <a th:href="@{/login}" class="log-in btn btn-info d-inline" type="button" >Log in</a>
-            <a th:href="@{/create}" class="log-in btn btn-danger d-inline" type="button"  >Sign up</a>
-            <a th:href="@{/logout}" class="log-out" type="button" >Log out</a>
+            <a th:href="@{/login}" class="log-in btn btn-info d-inline" type="button">Log in</a>
+            <a th:href="@{/create}" class="log-in btn btn-danger d-inline" type="button">Sign up</a>
+            <a th:href="@{/logout}" class="log-out" type="button">Log out</a>
         </form>
 
     </nav>
@@ -62,9 +62,9 @@
             </a>
         </div>
     </div>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
 
-        <a class="navbar-brand" href="#">Home</a>
+        <a class="navbar-brand" href="/client">Home</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -73,20 +73,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">My Book <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#">My Book </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Category</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Author
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                        <div class="dropdown-divider"></div>
-                    </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Author</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -180,8 +173,8 @@
                                 Related Books:
                             </div>
                         </div>
-                        <div class="book-group">
-                            <div class="row">
+                            <div class="book-group">
+                                <div class="row">
                                     <div class="card card-book mb-3" th:block th:each="book : ${books}">
                                         <div class="card-body">
                                             <table>
@@ -192,15 +185,15 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td align="center" >
-                                                            <a class="btn btn-success" th:href="${book.bookId}">Views</a>
+                                                    <td align="center">
+                                                        <a class="btn btn-success" th:href="${book.bookId}">Views</a>
                                                     </td>
                                                 </tr>
                                             </table>
                                         </div>
                                     </div>
+                                </div>
                             </div>
-                        </div>
                     </div>
                 </article>
             </div>
@@ -264,7 +257,7 @@
 
 </div>
 
-<footer class="card card-default">
+<footer class="card card-default fixed-bottom">
     <div class="card-header text-center">
         <p>CodeGym &copy; 2020</p>
     </div>

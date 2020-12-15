@@ -1,5 +1,4 @@
-package com.codegym.case4.service.role;
-
+package com.codegym.case4.service.Role;
 
 import com.codegym.case4.model.Role;
 
@@ -14,5 +13,5 @@ public interface IRoleService {
 
     void remove(Long id);
 
-    Role findRoleByroleName(String roleName);
+    Role findRoleByRoleName(String roleName);
 }

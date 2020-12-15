@@ -42,31 +42,33 @@ public class BookControllerClient {
     public Page<Author> getAllAuthors(Pageable pageable) {
         return authorService.findAll(pageable);
     }
+
     @Autowired
     private IAuthorService iAuthorService;
 
 
-
     @GetMapping("/views/{id}")
-    public ModelAndView showEditForm(@PathVariable Long id,@PageableDefault(size = 10) Pageable pageable){
+    public ModelAndView showEditForm(@PathVariable Long id, @PageableDefault(size = 10) Pageable pageable) {
         Optional<Book> viewsBook = bookService.findById(id);
-        if(viewsBook != null) {
+        if (viewsBook != null) {
             Book book = viewsBook.get();
-            BookForm bookForm = new BookForm(book.getBookId(),null,book.getTitle(),book.getDescription(),book.isDeleted(),
-                    book.getPublishedDate(),book.getPages(),book.getCategories(),book.getAuthorId());
+            BookForm bookForm = new BookForm(book.getBookId(), null, book.getTitle(), book.getDescription(), book.isDeleted(),
+                    book.getPublishedDate(), book.getPages(), book.getCategories(), book.getAuthorId());
             Page<Book> books = bookService.findAllByAuthorId(id, pageable);
             ModelAndView modelAndView = new ModelAndView("/bookDetail");
-            modelAndView.addObject("books",books);
-            modelAndView.addObject("selectedCategories",book.getCategories());
-            modelAndView.addObject("coverImgLink",book.getCoverImg());
+            modelAndView.addObject("books", books);
+            modelAndView.addObject("selectedCategories", book.getCategories());
+            modelAndView.addObject("coverImgLink", book.getCoverImg());
             modelAndView.addObject("book", bookForm);
             return modelAndView;
 
-        }else {
+        } else {
             ModelAndView modelAndView = new ModelAndView("/error.404");
             return modelAndView;
         }
     }
+
+
 }
 
 

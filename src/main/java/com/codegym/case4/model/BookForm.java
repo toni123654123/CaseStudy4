@@ -1,54 +1,24 @@
 package com.codegym.case4.model;
 
-import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import java.util.Set;
 
-@Data
-@Entity
-@Table(name= "Books")
-public class Book {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class BookForm {
     private Long bookId;
-    private String coverImg;
-    @NotEmpty
+    private MultipartFile coverImg;
     private String title;
     private String description;
-    @Column(columnDefinition="BOOLEAN DEFAULT false")
     private boolean isDeleted;
     private long publishedDate;
     private int pages;
-    @ManyToMany(fetch = FetchType.EAGER)
     private Set<Category> categories;
-    @ManyToOne
     private Author authorId;
 
-    public Book() {
-    }
-    public Book(String coverImg, @NotEmpty String title, String description, Boolean isDeleted, Long publishedDate, Integer pages) {
-        this.coverImg = coverImg;
-        this.title = title;
-        this.description = description;
-        this.isDeleted = isDeleted;
-        this.publishedDate = publishedDate;
-        this.pages = pages;
+    public BookForm() {
     }
 
-    public Book(Long bookId, @NotEmpty String title, String description, boolean isDeleted, long publishedDate, int pages, Set<Category> categories, Author authorId) {
-        this.bookId = bookId;
-        this.title = title;
-        this.description = description;
-        this.isDeleted = isDeleted;
-        this.publishedDate = publishedDate;
-        this.pages = pages;
-        this.categories = categories;
-        this.authorId = authorId;
-    }
-
-    public Book(Long bookId, String coverImg, @NotEmpty String title, String description, boolean isDeleted, long publishedDate, int pages, Set<Category> categories, Author authorId) {
+    public BookForm(Long bookId, MultipartFile coverImg, String title, String description, boolean isDeleted, long publishedDate, int pages, Set<Category> categories, Author authorId) {
         this.bookId = bookId;
         this.coverImg = coverImg;
         this.title = title;
@@ -60,8 +30,8 @@ public class Book {
         this.authorId = authorId;
     }
 
-    public Book(String coverImg, @NotEmpty String title, String description, boolean isDeleted, long publishedDate, int pages, Set<Category> categories, Author authorId) {
-        this.coverImg = coverImg;
+    public BookForm(Long bookId, String title, String description, boolean isDeleted, long publishedDate, int pages, Set<Category> categories, Author authorId) {
+        this.bookId = bookId;
         this.title = title;
         this.description = description;
         this.isDeleted = isDeleted;
@@ -70,6 +40,7 @@ public class Book {
         this.categories = categories;
         this.authorId = authorId;
     }
+
 
     public Long getBookId() {
         return bookId;
@@ -79,11 +50,11 @@ public class Book {
         this.bookId = bookId;
     }
 
-    public String getCoverImg() {
+    public MultipartFile getCoverImg() {
         return coverImg;
     }
 
-    public void setCoverImg(String coverImg) {
+    public void setCoverImg(MultipartFile coverImg) {
         this.coverImg = coverImg;
     }
 
@@ -111,19 +82,19 @@ public class Book {
         isDeleted = deleted;
     }
 
-    public Long getPublishedDate() {
+    public long getPublishedDate() {
         return publishedDate;
     }
 
-    public void setPublishedDate(Long publishedDate) {
+    public void setPublishedDate(long publishedDate) {
         this.publishedDate = publishedDate;
     }
 
-    public Integer getPages() {
+    public int getPages() {
         return pages;
     }
 
-    public void setPages(Integer pages) {
+    public void setPages(int pages) {
         this.pages = pages;
     }
 

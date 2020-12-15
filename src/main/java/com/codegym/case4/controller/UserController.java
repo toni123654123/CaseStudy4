@@ -1,27 +1,23 @@
 package com.codegym.case4.controller;
 
-
 import com.codegym.case4.model.Role;
 import com.codegym.case4.model.User;
-import com.codegym.case4.service.role.IRoleService;
-import com.codegym.case4.service.user.IUserService;
+import com.codegym.case4.service.Role.IRoleService;
+import com.codegym.case4.service.User.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.HashSet;
 import java.util.Optional;
-import java.util.Set;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/admin/user")
 public class UserController {
     @Autowired
     private IUserService userService;
@@ -29,11 +25,8 @@ public class UserController {
     @Autowired
     private IRoleService roleService;
 
-    @Autowired
-    PasswordEncoder passwordEncoder;
-
     @ModelAttribute("allRoles")
-    private Iterable<Role> allRoles() {
+    private Iterable<Role> allRoles(){
         return roleService.findAll();
     }
 
@@ -50,80 +43,78 @@ public class UserController {
         } else {
             users = userService.findAll(pageable);
         }
-        ModelAndView modelAndView = new ModelAndView("/userInfoPage");
+        ModelAndView modelAndView = new ModelAndView("/user/list");
         modelAndView.addObject("users", users);
         return modelAndView;
     }
 
     // Create user
     @GetMapping("/create")
-    public ModelAndView showCreateForm() {
-        ModelAndView modelAndView = new ModelAndView("/create");
+    public ModelAndView showCreateForm(){
+        ModelAndView modelAndView = new ModelAndView("/user/create");
         modelAndView.addObject("user", new User());
         return modelAndView;
     }
 
-
     @PostMapping("/create")
-    public ModelAndView saveCustomer(@Validated @ModelAttribute("user") User user, BindingResult bindingResult) {
-        ModelAndView modelAndView = new ModelAndView("/create");
-        if (!bindingResult.hasFieldErrors()) {
-            Role role = roleService.findRoleByroleName("ROLE_USER");
-            Set<Role> roles = new HashSet<>();
-            roles.add(role);
-            user.setRoles(roles);
-            user.setPassword(passwordEncoder.encode(user.getPassword()));
-            userService.save(user);
-            modelAndView.addObject("user", user);
-            modelAndView.addObject("message", "New user created successfully");
+    public ModelAndView saveUser(@Validated @ModelAttribute("user") User user, BindingResult bindingResult  ){
+        if(bindingResult.hasFieldErrors()){
+            ModelAndView modelAndView = new ModelAndView("/user/create");
+            return modelAndView;
         }
+        userService.save(user);
+        ModelAndView modelAndView = new ModelAndView("/user/create");
+        modelAndView.addObject("user", user);
+        modelAndView.addObject("message", "New user is created successfully");
         return modelAndView;
     }
 
     // Delete function
     @GetMapping("/delete/{id}")
-    public ModelAndView showDeleteForm(@PathVariable Long id) {
+    public ModelAndView showDeleteForm(@PathVariable Long id){
         Optional<User> deletedUser = userService.findById(id);
-        if (deletedUser != null) {
+        if(deletedUser!=null){
             User user = deletedUser.get();
             ModelAndView modelAndView = new ModelAndView("/user/delete");
-            modelAndView.addObject("user", user);
+            modelAndView.addObject("user",user);
             return modelAndView;
-        } else {
+        }
+        else {
             ModelAndView modelAndView = new ModelAndView("/error.404");
             return modelAndView;
         }
     }
 
     @PostMapping("/delete")
-    public String deleteUser(@ModelAttribute("user") User user) {
+    public String deleteUser(@ModelAttribute("user") User user){
         userService.remove(user.getUserId());
-        return "redirect:/user";
+        return "redirect:/admin/user";
     }
 
     // Edit function
     @GetMapping("/edit/{id}")
-    public ModelAndView showEditForm(@PathVariable Long id) {
+    public ModelAndView showEditForm(@PathVariable Long id){
         Optional<User> editedUser = userService.findById(id);
-        if (editedUser != null) {
+        if(editedUser != null) {
             User user = editedUser.get();
             ModelAndView modelAndView = new ModelAndView("/user/edit");
 //            modelAndView.addObject("selectedCategories",user.getCategories());
             modelAndView.addObject("user", user);
             return modelAndView;
 
-        } else {
+        }else {
             ModelAndView modelAndView = new ModelAndView("/error.404");
             return modelAndView;
         }
     }
-
     @PostMapping("/edit")
-    public ModelAndView updateUser(@ModelAttribute("user") User user) {
+    public ModelAndView updateUser(@ModelAttribute("user") User user){
         userService.save(user);
         ModelAndView modelAndView = new ModelAndView("/user/edit");
         modelAndView.addObject("user", user);
         modelAndView.addObject("message", "User updated successfully");
         return modelAndView;
     }
+
+
 }

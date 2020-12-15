@@ -1,5 +1,4 @@
-package com.codegym.case4.service.role;
-
+package com.codegym.case4.service.Role;
 
 import com.codegym.case4.model.Role;
 import com.codegym.case4.repository.IRoleRepository;
@@ -9,10 +8,9 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class RoleService implements IRoleService {
+public class RoleServiceImpl implements IRoleService{
     @Autowired
-    private IRoleRepository roleRepository;
-
+    IRoleRepository roleRepository;
     @Override
     public Iterable<Role> findAll() {
         return roleRepository.findAll();
@@ -34,8 +32,7 @@ public class RoleService implements IRoleService {
     }
 
     @Override
-    public Role findRoleByroleName(String roleName) {
-        return roleRepository.findRoleByroleName(roleName);
+    public Role findRoleByRoleName(String roleName) {
+        return roleRepository.findRoleByRoleName(roleName);
     }
-
 }

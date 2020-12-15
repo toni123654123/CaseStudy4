@@ -17,8 +17,7 @@ public class Rate {
     @ManyToOne
     private User userId;
 
-    @Min(1)
-    @Max(5)
+    @Min(1) @Max(5)
     private int rate;
 
     public Rate() {
