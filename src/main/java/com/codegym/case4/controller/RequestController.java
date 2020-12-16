@@ -98,7 +98,7 @@ public class RequestController {
 
     @PostMapping("/client/request/create")
     public ModelAndView saveRequest(@ModelAttribute("requestForm") RequestForm requestForm) {
-        ModelAndView modelAndView = new ModelAndView("/request/create");
+        ModelAndView modelAndView = new ModelAndView("/request/listClient");
         modelAndView.addObject("message", "New request created successfully");
         UserPrincipal userPrincipal = (UserPrincipal) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userService.findByUsername(userPrincipal.getUsername());

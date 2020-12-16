@@ -103,18 +103,15 @@
         <article class="col-sm-9">
             <div class="container">
                 <div class="row">
-                    <h2 class="title">List book</h2>
+                    <h2 class="title">List Author</h2>
                     <br>
                     <div class="book-group">
                         <div class="row">
-                            <div class="col-md-4 col-sm-6 col-12" th:block th:each="book : ${books}">
+                            <div class="col-md-4 col-sm-6 col-12" th:block th:each="author: ${authors}">
                                 <div class="card card-book mb-3">
-                                    <img class="card-img-top" th:src="@{'http://localhost:8080/' + ${book.coverImg}}"
-                                         style="height: 200px;width: 150px">
                                     <div class="card-body">
-                                        <h5 class="card-title" th:text="${book.title}"></h5>
-
-                                        <a class="btn btn-success" th:href="@{/client/book/views/__${book.bookId}__}">Views</a>
+                                        <h5 class="card-title" th:text="${author.authorName}"></h5>
+                                        <a class="btn btn-success" th:href="@{/client/author/__${author.authorId}__}">Views</a>
                                     </div>
                                 </div>
                             </div>

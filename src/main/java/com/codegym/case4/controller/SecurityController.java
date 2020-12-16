@@ -1,9 +1,11 @@
 package com.codegym.case4.controller;
 
 import com.codegym.case4.model.Book;
+import com.codegym.case4.model.Category;
 import com.codegym.case4.model.Role;
 import com.codegym.case4.model.User;
 import com.codegym.case4.service.Book.IBookService;
+import com.codegym.case4.service.Category.ICategoryService;
 import com.codegym.case4.service.Role.IRoleService;
 import com.codegym.case4.service.User.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +37,14 @@ public class SecurityController {
 
     @Autowired
     PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private ICategoryService categoryService;
+
+    @ModelAttribute("allCategories")
+    public Iterable<Category> getAllCategories() {
+        return categoryService.findAll();
+    }
 
     @RequestMapping("/")
     public ModelAndView listBooks(@RequestParam("s") Optional<String> s, @PageableDefault(size = 10) Pageable pageable) {
@@ -92,7 +102,7 @@ public class SecurityController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginPage() {
-        return "loginPage";
+        return "login";
     }
 
     @RequestMapping(value = "/logoutSuccessful", method = RequestMethod.GET)

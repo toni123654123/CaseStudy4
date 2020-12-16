@@ -51,7 +51,7 @@
     <th:block th:each="book : ${books}">
         <tr>
             <td th:text="${book.bookId}"></td>
-            <td><a  th:text="${book.title}" th:href="@{/admin/book/__${book.bookId}__}"></a></td>
+            <td><a  th:text="${book.title}"></a></td>
             <td>
                 <img th:src="@{'http://localhost:8080/' + ${book.coverImg}}" style="height: 200px;width: 150px">
             </td>
