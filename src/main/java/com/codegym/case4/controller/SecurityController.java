@@ -86,7 +86,7 @@ public class SecurityController {
 
     @PostMapping("/create")
     public ModelAndView saveCustomer(@Validated @ModelAttribute("user") User user, BindingResult bindingResult) {
-        ModelAndView modelAndView = new ModelAndView("/create");
+        ModelAndView modelAndView = new ModelAndView("create");
         if (!bindingResult.hasFieldErrors()) {
             Role role = roleService.findRoleByRoleName("ROLE_USER");
             Set<Role> roles = new HashSet<>();
@@ -94,7 +94,7 @@ public class SecurityController {
             user.setRoles(roles);
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             userService.save(user);
-            modelAndView.addObject("user", user);
+            modelAndView.addObject("user", new User());
             modelAndView.addObject("message", "New user created successfully");
         }
         return modelAndView;
