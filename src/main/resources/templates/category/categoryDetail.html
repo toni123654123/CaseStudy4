@@ -32,7 +32,7 @@
             <span style="color: #f60707" th:if="${userInfo}">Hi...! <span
                     th:text="${userInfo}"></span></span>
             <span><a th:href="@{/create}" class="log-in btn btn-danger d-inline">Sign up</a></span>
-            <a  th:href="@{/logout}" class="log-out" type="button">Log out</a>
+            <a th:href="@{/logout}" class="log-out" type="button">Log out</a>
         </form>
 
     </nav>
@@ -102,15 +102,15 @@
 
         <article class="col-sm-9">
             <div class="container">
-                <div class="row">
+
                     <h2 class="title">List book</h2>
                     <br>
                     <div class="book-group">
                         <div class="row">
-                            <div class="col-md-4 col-sm-6 col-12" th:block th:each="book : ${books}">
+                            <div class="col-md-4 col-sm-6 col-12"  th:each="book : ${books}">
                                 <div class="card card-book mb-3">
                                     <img class="card-img-top" th:src="@{'http://localhost:8080/' + ${book.coverImg}}"
-                                         style="height: 200px;width: 150px">
+                                         style="height: 250px;width: 100%">
                                     <div class="card-body">
                                         <h5 class="card-title" th:text="${book.title}"></h5>
 
@@ -120,7 +120,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
 
             </div>
 

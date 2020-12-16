@@ -128,16 +128,7 @@
     </style>
 </head>
 <body>
-<div th:if="${#request.getParameter('error') == 'true'}"
-     style="color:red;margin:10px 0px;">
-    Login Failed!!!<br />
-    Reason :
-    <span th:if="${#session!= null and #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}"
-          th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">
-                Static summary
-         </span>
 
-</div>
 
     <div class="login">
         <form name='f' th:action="@{/j_spring_security_check}" method='POST'>
@@ -145,6 +136,15 @@
         <h2>Login</h2>
         <div class="group"><input type="text" placeholder="Username" name='username'><i class="fa fa-user"></i></div>
         <div class="group"><input type="password" placeholder="Password" name='password'><i class="fa fa-lock"></i></div>
+            <div th:if="${#request.getParameter('error') == 'true'}"
+                 style="color:red;margin:10px 0px;">
+                Login Failed!!!<br/>
+                Reason :
+                <span th:if="${#session!= null and #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}"
+                      th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">
+                Static summary
+         </span>
+            </div>
         <button name="submit"> <i class="fa fa-send"></i>Login</button>
         <span class="fs">Remember Me? <input type="checkbox" name="remember-me" /> </span>
         <p class="ss">Don't have an account? <a th:href="@{/create}">Signup</a></p>
