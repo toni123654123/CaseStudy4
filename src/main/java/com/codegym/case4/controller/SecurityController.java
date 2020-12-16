@@ -110,5 +110,4 @@ public class SecurityController {
         model.addAttribute("title", "Logout");
         return "logoutSuccessfulPage";
     }
-
 }
