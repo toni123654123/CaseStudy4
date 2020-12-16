@@ -45,13 +45,18 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="d-block w-100" src="../image/cover1.jpeg" alt="First slide"
+                    <img class="d-block w-100" th:src="@{https://www.abc.net.au/cm/rimage/7284526-16x9-large.jpg?v=2}" alt="First slide"
                          style="width: 20% ; height: 300px">
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="../image/cover.jpeg" alt="Second slide"
+                    <img class="d-block w-100" th:src="@{https://i0.wp.com/pennway.org/wp-content/uploads/2017/03/Identity-16-9-Front-Page.png?fit=1200%2C675&ssl=1&w=640}" alt="Second slide"
                          style="width: 20% ; height: 300px">
                 </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" th:src="@{https://ministryark.com/katy/wp-content/uploads/2015/06/A-Person-Plans-featured-image-1024x675.jpg}" alt="Second slide"
+                         style="width: 20% ; height: 300px">
+                </div>
+
 
             </div>
             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -102,7 +107,7 @@
 
         <article class="col-sm-9">
             <div class="container">
-                <div class="row">
+
                     <h2 class="title">List Author</h2>
                     <br>
                     <div class="book-group">
@@ -110,14 +115,14 @@
                             <div class="col-md-4 col-sm-6 col-12" th:block th:each="author: ${authors}">
                                 <div class="card card-book mb-3">
                                     <div class="card-body">
-                                        <h5 class="card-title" th:text="${author.authorName}"></h5>
+                                        <p class="card-title" th:text="${author.authorName}"></p>
                                         <a class="btn btn-success" th:href="@{/client/author/__${author.authorId}__}">Views</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+
 
             </div>
 
@@ -127,13 +132,30 @@
             <div class="poly-cart">
                 <div class="card">
                     <div class="card-body">
-                        <img class="amazon col-sm-12" src="../image/download.jpeg"/>
+                        <img class="amazon col-sm-12" th:src="@{https://i.pinimg.com/originals/5f/b2/79/5fb2796df751224458de2735e20c6505.jpg}"/>
                         <ul class="col-sm-12 feature">
-                            <li class="feature-title">The 7 Habits of Highly Effected People</li>
-                            <li class="feature-author">-Stephen R.Covey-</li>
+                            <li class="feature-title">Ai Từng Là Con Nít – Làm Như Thế Mới Lạ</li>
+                            <li class="feature-author">-Nhà Xuất Bản Trẻ-</li>
+                            <li>
+                                <a class="btn btn-primary"
+                                   th:href="@{https://tiki.vn/ai-tung-la-con-nit-lam-nhu-the-moi-la-p361946.html}">
+                                    Buy now
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="poly-cart">
+                <div class="card">
+                    <div class="card-body">
+                        <img class="amazon col-sm-12" th:src="@{https://salt.tikicdn.com/cache/w1200/ts/product/96/a9/e9/d7f622587921f03f6cae8f0620315f13.jpg}"/>
+                        <ul class="col-sm-12 feature">
+                            <li class="feature-title">Làm Đĩ - Bìa Cứng (Tái Bản)</li>
+                            <li class="feature-author">-Vũ Trọng Phụng-</li>
                             <li>
                                 <button class="btn btn-primary"
-                                        href="https://www.amazon.co.jp/Habits-Highly-Effective-People-Signature/dp/1511335556/ref=sr_1_22?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=2HVLOF02WEHM1&dchild=1&keywords=the+7+habits+of+highly+effective+people&qid=1607853969&sprefix=the+7%2Caps%2C337&sr=8-22">
+                                        th:href="@{https://tiki.vn/lam-di-bia-cung-tai-ban-p12106733.html?spid=21749401&utm_source=google&utm_medium=cpc&utm_campaign=SEA_NBR_GGL_SMA_DTP_ALL_VN_ALL_UNK_UNK_C.ALL_X.10625984613_Y.106657549322_V.21749401_W.c_A.925746467224_O.UNK&gclid=Cj0KCQiA2uH-BRCCARIsAEeef3mCEyQcPvQ7U8-Xf8r8MY6Doo_ZRDK67zGULSDqGVSqwebDoqBg67YaAuPLEALw_wcB}">
                                     Buy now
                                 </button>
                             </li>
@@ -144,30 +166,13 @@
             <div class="poly-cart">
                 <div class="card">
                     <div class="card-body">
-                        <img class="amazon col-sm-12" src="../image/download.jpeg"/>
+                        <img class="amazon col-sm-12" th:src="@{https://kenh14cdn.com/2017/ec4-1484340590645.jpg}"/>
                         <ul class="col-sm-12 feature">
-                            <li class="feature-title">The 7 Habits of Highly Effected People</li>
-                            <li class="feature-author">-Stephen R.Covey-</li>
+                            <li class="feature-title">Your Name</li>
+                            <li class="feature-author">-Shinkai Makoto-</li>
                             <li>
                                 <button class="btn btn-primary"
-                                        href="https://www.amazon.co.jp/Habits-Highly-Effective-People-Signature/dp/1511335556/ref=sr_1_22?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=2HVLOF02WEHM1&dchild=1&keywords=the+7+habits+of+highly+effective+people&qid=1607853969&sprefix=the+7%2Caps%2C337&sr=8-22">
-                                    Buy now
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="poly-cart">
-                <div class="card">
-                    <div class="card-body">
-                        <img class="amazon col-sm-12" src="../image/download.jpeg"/>
-                        <ul class="col-sm-12 feature">
-                            <li class="feature-title">The 7 Habits of Highly Effected People</li>
-                            <li class="feature-author">-Stephen R.Covey-</li>
-                            <li>
-                                <button class="btn btn-primary"
-                                        href="https://www.amazon.co.jp/Habits-Highly-Effective-People-Signature/dp/1511335556/ref=sr_1_22?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=2HVLOF02WEHM1&dchild=1&keywords=the+7+habits+of+highly+effective+people&qid=1607853969&sprefix=the+7%2Caps%2C337&sr=8-22">
+                                        th:href="@{https://tiki.vn/your-name-p648065.html?spid=648078&utm_source=google&utm_medium=cpc&utm_campaign=SEA_NBR_GGL_SMA_DTP_ALL_VN_ALL_UNK_UNK_C.ALL_X.10625984610_Y.106657549162_V.648078_W.c_A.1035049128680_O.UNK&gclid=Cj0KCQiA2uH-BRCCARIsAEeef3ndoWLT76Ivf60qGQfsn-YxLUeAitOGa-1G4g8Fe7valmuohYBPb8MaArQfEALw_wcB}">
                                     Buy now
                                 </button>
                             </li>
@@ -176,6 +181,7 @@
                 </div>
             </div>
         </aside>
+
     </div>
     <div>
         <a th:href="@{'/'(page=${books.number - 1})}" th:if="${books.hasPrevious()}">Previous</a>
